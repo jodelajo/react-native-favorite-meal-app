@@ -4,8 +4,7 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  Button,
-  TouchableOpacity,
+  
 } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 import Colors from "../constants/Colors";

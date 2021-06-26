@@ -1,13 +1,25 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
-import Colors from "../constants/Colors";
+import MealItem from "../components/MealItem";
 
 export default function CategoryMealsScreen({ navigation }) {
+  
 
-    function renderMealItem(itemData) {
-        return (<View><Text>{itemData.item.title}</Text></View>)
-    }
+  function renderMealItem(itemData) {
+    return (
+      <MealItem
+        onSelectMeal={() =>
+            navigation.navigate({
+                routeName: "MealDetails",
+                params: {
+                  mealId: itemData.item.id,
+                },
+              })}
+        itemData={itemData}
+      />
+    );
+  }
   const catId = navigation.getParam("categoryId");
 
   const displayedMeals = MEALS.filter(
@@ -16,7 +28,11 @@ export default function CategoryMealsScreen({ navigation }) {
 
   return (
     <View style={styles.screen}>
-     <FlatList data={displayedMeals} renderItem={renderMealItem} />
+      <FlatList
+        data={displayedMeals}
+        renderItem={renderMealItem}
+        style={{ width: "100%" }}
+      />
     </View>
   );
 }
