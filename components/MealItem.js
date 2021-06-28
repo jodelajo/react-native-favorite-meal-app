@@ -6,6 +6,7 @@ import {
   Text,
   ImageBackground,
 } from "react-native";
+import DefaultText from "./DefaultText";
 
 export default function MealItem({ onSelectMeal, itemData }) {
   return (
@@ -24,9 +25,9 @@ export default function MealItem({ onSelectMeal, itemData }) {
           </ImageBackground>
         </View>
         <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-          <Text>{itemData.item.duration} minutes</Text>
-          <Text>{itemData.item.complexity.toUpperCase()}</Text>
-          <Text>{itemData.item.affordability.toUpperCase()}</Text>
+          <DefaultText>{itemData.item.duration} minutes</DefaultText>
+          <DefaultText>{itemData.item.complexity.toUpperCase()}</DefaultText>
+          <DefaultText>{itemData.item.affordability.toUpperCase()}</DefaultText>
         </View>
       </View>
     </TouchableOpacity>
@@ -38,7 +39,8 @@ const styles = StyleSheet.create({
     height: 200,
     width: "100%",
     backgroundColor: "#f5f5f5",
-    padding: 10
+    padding: 10,
+    marginVertical: 10,
     
   },
   titleContainer: {
